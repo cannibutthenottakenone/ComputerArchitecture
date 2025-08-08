@@ -1,7 +1,7 @@
 .text
 .globl fact
 main:
-        li      $a0, 5
+        li      $a0, 12         #12! is the greatest factorial that a 32bits signed int can handle
         jal     fact
         move    $a0, $v0
         li      $v0, 1          #load print
@@ -10,11 +10,9 @@ main:
         syscall                 #exit
 fact:
         # frame allocation
-        subu    $sp, $sp, 32    #sfract
-        sw      $a0, 32($sp)
-        sw      $ra, 16($sp)
-        sw      $fp, 8($sp)
-        addiu   $fp, $sp,32
+        subu    $sp, $sp, 24    #sfract
+        sw      $a0, 24($sp)
+        sw      $ra, 8($sp)
 
         #main code
         bgtz    $a0, more       #check a0>0
@@ -23,11 +21,10 @@ fact:
 more:
         addi    $a0, $a0, -1    #smore
         jal     fact
-        lw      $a0, 32($sp)
+        lw      $a0, 24($sp)
         mul     $v0, $v0, $a0
         j       ret
 ret:
-        lw      $ra, 16($sp)    #sret
-        lw      $fp, 8($sp)
-        addiu   $sp, 32
+        lw      $ra, 8($sp)    #sret
+        addiu   $sp, 24
         jr      $ra
