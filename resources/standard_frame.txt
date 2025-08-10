@@ -1,0 +1,12 @@
+# #memory map
+# \\ = reserved
+#
+# frame size: 24bytes (24 + 0 padding to doubleword)
+# variable_name     dim     fp-x    sp+x
+# a0 aka x          4       0       24
+# a1 aka y          4       4       20
+# a2 aka z          4       8       16
+# \\ a3             4       12      12
+# ra                4       16      8
+# \\ ra padding     4       20      4
+#-end of frame-             24      0

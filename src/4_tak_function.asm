@@ -27,7 +27,7 @@ tak:
     # #memory map
     # \\ = reserved
     #
-    # framw size: 40bytes (36 + 4 padding to doubleword)
+    # frame size: 40bytes (36 + 4 padding to doubleword)
     # variable_name     dim     fp-x    sp+x
     # a0 aka x          4       0       40
     # a1 aka y          4       4       36
