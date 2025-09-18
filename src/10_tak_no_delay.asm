@@ -126,9 +126,9 @@ tak:
     sw      $fp,        16($sp)
     addiu   $fp,        $sp,            40
 
-    blt     $a1,        $a0,            p1                                                                                              #if (y<x) {goto p1} else {return z}
+    blt     $a1,        $a0,            tak_p1                                                                                          #if (y<x) {goto p1} else {return z}
     move    $v0,        $a2                                                                                                             #move $a2 (z) to $v0 for return
-    j       ret
+    j       tak_ret
 
 tak_p1:
 
@@ -158,7 +158,7 @@ tak_p1:
     move    $a2,        $v0
     jal     tak
 
-    j       ret
+    j       tak_ret
 
 tak_ret:
     lw      $ra,        -16($fp)                                                                                                        #|tak->ret|
